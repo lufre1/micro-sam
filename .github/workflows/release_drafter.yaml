@@ -34,7 +34,7 @@ jobs:
   
       - name: Detect new version
         id: check-version
-        if: steps.check-parent-commit.outputs.sha
+        #if: steps.check-parent-commit.outputs.sha
         uses: salsify/action-detect-and-tag-new-version@v2.0.1
         with:
           create-tag: false
@@ -42,7 +42,7 @@ jobs:
             bash -o pipefail -c "cat micro-sam/micro_sam/__version__.py | jq -r '.version'"
       - name: Push tag
         id: tag-version
-        if: steps.check-version.outputs.previous-version != steps.check-version.outputs.current-version
+        #if: steps.check-version.outputs.previous-version != steps.check-version.outputs.current-version
         uses: mathieudutour/github-tag-action@v6.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
