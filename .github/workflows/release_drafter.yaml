@@ -29,6 +29,9 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+  
       - name: Detect new version
         id: check-version
         if: steps.check-parent-commit.outputs.sha
