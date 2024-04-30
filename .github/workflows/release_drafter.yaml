@@ -41,7 +41,7 @@ jobs:
         with:
           create-tag: false
           version-command: |
-            bash -o pipefail -c "cat micro-sam/micro_sam/__version__.py | jq -r '.version'"
+            bash -o pipefail -c "cat ../micro_sam/__version__.py | jq -r '.version'"
       - name: Push tag
         id: tag-version
         #if: steps.check-version.outputs.previous-version != steps.check-version.outputs.current-version
