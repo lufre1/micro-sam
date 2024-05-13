@@ -5,8 +5,17 @@ import os
 yaml = ruamel.yaml.YAML()
 yaml.preserve_quotes = True
 
-# Construct the filename based on OS name
-construct_file = f"construct_{os.environ.get('RUNNER_OS')}.yaml"
+# Get the current OS name from the environment variable
+current_os = os.environ.get('RUNNER_OS').lower()  # Ensure lowercase for comparison
+
+# Construct the filename based on OS name (consider all possibilities)
+if current_os == 'windows':
+    construct_file = "construct_windows-latest.yaml"
+elif current_os == 'linux':
+    construct_file = "construct_ubuntu-latest.yaml"  # Assuming ubuntu-latest for Linux
+# Add an else block if you plan to support macOS in the future
+else:
+    raise Exception(f"Unsupported OS: {current_os}")
 
 # Load YAML using ruamel.yaml
 yaml = ruamel.yaml.YAML()
