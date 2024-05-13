@@ -6,7 +6,7 @@ yaml = ruamel.yaml.YAML()
 yaml.preserve_quotes = True
 
 # Construct the filename based on OS name
-construct_file = f"construct_{current_os}.yaml"
+construct_file = f"construct_{os.environ.get('RUNNER_OS')}.yaml"
 
 # Load YAML using ruamel.yaml
 yaml = ruamel.yaml.YAML()
